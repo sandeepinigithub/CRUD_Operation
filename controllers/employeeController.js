@@ -43,12 +43,13 @@ router.get("/list", (req, res) => {
     if (!err) {
       res.render("employee/list", {
         list: docs,
+        viewTitle : "List of Employee"
       });
       // console.log(docs);
     } else {
       console.log("Error in retrieving employee list : " + err);
     }
-  }).lean() //very important keyword lean()
+  }).lean(); //very important keyword lean()
 });
 
 function handleValidationError(err, body) {
@@ -65,5 +66,17 @@ function handleValidationError(err, body) {
     }
   }
 }
+
+// Update Employee
+router.get("/:id", (req, res) => {
+    Employee.findById(req.params.id,(err,doc)=>{
+        if(!err){
+            res.render("employee/addOrEdit",{
+                viewTitle: "Update Employee",
+                employee : doc
+            });
+        }
+    }).lean()
+});
 
 module.exports = router;
