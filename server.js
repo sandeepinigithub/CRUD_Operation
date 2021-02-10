@@ -23,3 +23,10 @@ app.listen(3000, ()=>{
     console.log('Express server started at port : 3000');
 });
 app.use('/employee', employeeController);
+
+//Added by me 
+app.get('/' , (req,res)=>{
+    res.render("employee/addOrEdit", {
+        viewTitle: "Insert Employee",
+      });
+});

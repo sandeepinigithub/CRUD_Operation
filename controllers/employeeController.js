@@ -79,6 +79,7 @@ router.get("/:id", (req, res) => {
     }).lean()
 });
 
+//delete
 router.get("/delete/:id", (req,res)=>{
     Employee.findByIdAndRemove(req.params.id,(err,doc)=>{
         if(!err){
